@@ -110,6 +110,7 @@ app.get("/customers/getAll", (req, res) => {
       res.json(results);
     })
     .catch((err) => {
+      console.log(err);
       res.status(500).json({ error: err.message });
     });
 });
@@ -260,6 +261,7 @@ app.post("/customers/prices/:customerId", (req, res) => {
 // });
 app.get("/customers/prices/:customerId", async (req, res) => {
   const customerId = req.params.customerId;
+  console.log(customerId, "cusid");
 
   const getHeadersSQL = `SELECT id, header FROM price_headers WHERE customer_id = ?`;
   const getPricesSQL = `SELECT subheader, price, weight FROM price_list WHERE header_id = ?`;
@@ -279,6 +281,7 @@ app.get("/customers/prices/:customerId", async (req, res) => {
 
     res.json(result);
   } catch (err) {
+    console.log(err);
     res.status(500).json({ error: err.message });
   }
 });

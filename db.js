@@ -6,6 +6,9 @@ const pool = mysql.createPool({
   password: "Werna@print224",
   database: "u484700053_werna_print",
   timezone: "Z",
+  waitForConnections: true,
+  connectionLimit: 10, // Increase if needed
+  queueLimit: 0,
 });
 
 module.exports = pool.promise();
